@@ -1,0 +1,1902 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="319" android:versionName="3.19" package="com.nemo.vidmate">
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17" />
+    <permission android:name="com.nemo.vidmate.permission.C2D_MESSAGE" android:protectionLevel="signature|signatureOrSystem" />
+    <uses-permission android:name="com.nemo.vidmate.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_OWNER_DATA" />
+    <application android:theme="@style/AppTheme" android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="com.nemo.vidmate.common.VidmateApplication" android:allowBackup="true" android:largeHeap="true">
+        <activity android:label="@string/app_name" android:name="com.nemo.vidmate.WelcomeActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@*android:style/Theme.Translucent" android:name="com.nemo.vidmate.ShortcutActivity" android:excludeFromRecents="true" android:launchMode="singleInstance" android:screenOrientation="portrait" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.nemo.vidmate.download.DownloadActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.search.SearchActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|adjustNothing" />
+        <activity android:name="com.nemo.vidmate.nav.ex.NavActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.nav.ex.NavExActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.nav.ex.NavExEditActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.recommend.fullmovie.FullMovieDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.recommend.fullmovie.FullMovieFilterActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.recommend.music.MusicDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.recommend.music.MusicFilterActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.recommend.music.MusicSingerDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.recommend.music.MusicSingerFilterActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.recommend.tvshow.TvShowDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.recommend.tvshow.TvShowFilterActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.me.FeedbackFQActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|adjustNothing" />
+        <activity android:name="com.nemo.vidmate.favhis.BookmarkActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.favhis.FavoriteActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.favhis.HistoryActivity" android:screenOrientation="portrait" />
+        <activity android:label="  Download Video" android:name="com.nemo.vidmate.MainActivity" android:exported="true" android:launchMode="singleTask" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustResize|adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="  Vidmate " android:name="com.nemo.vidmate.MainActivity$WEBACTIVITY" android:exported="true" android:targetActivity="com.nemo.vidmate.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="vidmate" android:host="webview" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:label="  Video Player" android:name="com.nemo.vidmate.MainActivity$INVOKE" android:exported="true" android:targetActivity="com.nemo.vidmate.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="eletube" android:host="playvideo" android:path="" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:label="  Video Player" android:name="com.nemo.vidmate.MainActivity$HTML" android:exported="true" android:targetActivity="com.nemo.vidmate.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" android:host="*" />
+                <data android:mimeType="text/html" />
+                <data android:pathPattern=".*\.html" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:label="  Music Player" android:name="com.nemo.vidmate.MainActivity$MusicPlayerActivity" android:exported="true" android:targetActivity="com.nemo.vidmate.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:mimeType="audio/*" android:scheme="http" />
+                <data android:mimeType="audio/*" android:scheme="rtsp" />
+                <data android:mimeType="audio/*" android:scheme="rtmp" />
+                <data android:mimeType="audio/*" android:scheme="udp" />
+                <data android:mimeType="audio/*" android:scheme="tcp" />
+                <data android:mimeType="audio/*" android:scheme="file" />
+                <data android:mimeType="audio/*" android:scheme="content" />
+                <data android:mimeType="audio/*" android:scheme="mms" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="ftp" />
+                <data android:scheme="rtsp" />
+                <data android:scheme="rtmp" />
+                <data android:scheme="mms" />
+                <data android:scheme="tcp" />
+                <data android:scheme="udp" />
+                <data android:scheme="gopher" />
+                <data android:mimeType="audio/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="ftp" />
+                <data android:scheme="rtsp" />
+                <data android:scheme="rtmp" />
+                <data android:scheme="mms" />
+                <data android:scheme="tcp" />
+                <data android:scheme="udp" />
+                <data android:scheme="gopher" />
+                <data android:host="*" />
+                <data android:pathPattern="/.*\.aac" />
+                <data android:pathPattern="/.*\.flac" />
+                <data android:pathPattern="/.*\.m4a" />
+                <data android:pathPattern="/.*\.mid" />
+                <data android:pathPattern="/.*\.mp3" />
+                <data android:pathPattern="/.*\.ogg" />
+                <data android:pathPattern="/.*\.wav" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:scheme="gopher" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="application/flac" />
+                <data android:mimeType="application/x-flac" />
+                <data android:mimeType="application/ape" />
+                <data android:mimeType="application/x-ape" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:scheme="gopher" />
+                <data android:host="*" />
+                <data android:pathPattern=".*.aac" />
+                <data android:pathPattern=".*..*.aac" />
+                <data android:pathPattern=".*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*.ac3" />
+                <data android:pathPattern=".*..*.ac3" />
+                <data android:pathPattern=".*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*.amr" />
+                <data android:pathPattern=".*..*.amr" />
+                <data android:pathPattern=".*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*.au" />
+                <data android:pathPattern=".*..*.au" />
+                <data android:pathPattern=".*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*.flac" />
+                <data android:pathPattern=".*..*.flac" />
+                <data android:pathPattern=".*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*.m4a" />
+                <data android:pathPattern=".*..*.m4a" />
+                <data android:pathPattern=".*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*.mid" />
+                <data android:pathPattern=".*..*.mid" />
+                <data android:pathPattern=".*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*.mka" />
+                <data android:pathPattern=".*..*.mka" />
+                <data android:pathPattern=".*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*.mp3" />
+                <data android:pathPattern=".*..*.mp3" />
+                <data android:pathPattern=".*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*.ra" />
+                <data android:pathPattern=".*..*.ra" />
+                <data android:pathPattern=".*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*.wav" />
+                <data android:pathPattern=".*..*.wav" />
+                <data android:pathPattern=".*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*.wma" />
+                <data android:pathPattern=".*..*.wma" />
+                <data android:pathPattern=".*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="application/flac" />
+                <data android:mimeType="application/x-flac" />
+                <data android:mimeType="application/ape" />
+                <data android:mimeType="application/x-ape" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="*" />
+                <data android:pathPattern=".*.aac" />
+                <data android:pathPattern=".*..*.aac" />
+                <data android:pathPattern=".*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*.ac3" />
+                <data android:pathPattern=".*..*.ac3" />
+                <data android:pathPattern=".*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*.amr" />
+                <data android:pathPattern=".*..*.amr" />
+                <data android:pathPattern=".*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*.au" />
+                <data android:pathPattern=".*..*.au" />
+                <data android:pathPattern=".*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*.flac" />
+                <data android:pathPattern=".*..*.flac" />
+                <data android:pathPattern=".*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*.m4a" />
+                <data android:pathPattern=".*..*.m4a" />
+                <data android:pathPattern=".*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*.mid" />
+                <data android:pathPattern=".*..*.mid" />
+                <data android:pathPattern=".*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*.mka" />
+                <data android:pathPattern=".*..*.mka" />
+                <data android:pathPattern=".*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*.mp3" />
+                <data android:pathPattern=".*..*.mp3" />
+                <data android:pathPattern=".*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*.ra" />
+                <data android:pathPattern=".*..*.ra" />
+                <data android:pathPattern=".*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*.wav" />
+                <data android:pathPattern=".*..*.wav" />
+                <data android:pathPattern=".*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*.wma" />
+                <data android:pathPattern=".*..*.wma" />
+                <data android:pathPattern=".*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="*" />
+                <data android:pathPattern=".*.aac" />
+                <data android:pathPattern=".*..*.aac" />
+                <data android:pathPattern=".*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.aac" />
+                <data android:pathPattern=".*.ac3" />
+                <data android:pathPattern=".*..*.ac3" />
+                <data android:pathPattern=".*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ac3" />
+                <data android:pathPattern=".*.amr" />
+                <data android:pathPattern=".*..*.amr" />
+                <data android:pathPattern=".*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.amr" />
+                <data android:pathPattern=".*.au" />
+                <data android:pathPattern=".*..*.au" />
+                <data android:pathPattern=".*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.au" />
+                <data android:pathPattern=".*.flac" />
+                <data android:pathPattern=".*..*.flac" />
+                <data android:pathPattern=".*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.flac" />
+                <data android:pathPattern=".*.m4a" />
+                <data android:pathPattern=".*..*.m4a" />
+                <data android:pathPattern=".*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4a" />
+                <data android:pathPattern=".*.mid" />
+                <data android:pathPattern=".*..*.mid" />
+                <data android:pathPattern=".*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mid" />
+                <data android:pathPattern=".*.mka" />
+                <data android:pathPattern=".*..*.mka" />
+                <data android:pathPattern=".*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mka" />
+                <data android:pathPattern=".*.mp3" />
+                <data android:pathPattern=".*..*.mp3" />
+                <data android:pathPattern=".*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp3" />
+                <data android:pathPattern=".*.ra" />
+                <data android:pathPattern=".*..*.ra" />
+                <data android:pathPattern=".*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ra" />
+                <data android:pathPattern=".*.wav" />
+                <data android:pathPattern=".*..*.wav" />
+                <data android:pathPattern=".*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wav" />
+                <data android:pathPattern=".*.wma" />
+                <data android:pathPattern=".*..*.wma" />
+                <data android:pathPattern=".*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wma" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:label="  Video Player" android:name="com.nemo.vidmate.MainActivity$NewPlayerActivity" android:exported="true" android:targetActivity="com.nemo.vidmate.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\.vid" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:mimeType="video/*" android:scheme="http" />
+                <data android:mimeType="video/*" android:scheme="rtsp" />
+                <data android:mimeType="video/*" android:scheme="rtmp" />
+                <data android:mimeType="video/*" android:scheme="udp" />
+                <data android:mimeType="video/*" android:scheme="tcp" />
+                <data android:mimeType="video/*" android:scheme="file" />
+                <data android:mimeType="video/*" android:scheme="content" />
+                <data android:mimeType="video/*" android:scheme="mms" />
+                <data android:mimeType="application/x-mpegurl" />
+                <data android:mimeType="application/vnd.apple.mpegurl" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:mimeType="application/x-mpegurl" android:scheme="http" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="rtsp" />
+                <data android:scheme="rtmp" />
+                <data android:scheme="mms" />
+                <data android:scheme="tcp" />
+                <data android:scheme="udp" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SENDTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="application/sdp" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="ftp" />
+                <data android:scheme="rtsp" />
+                <data android:scheme="rtmp" />
+                <data android:scheme="mms" />
+                <data android:scheme="tcp" />
+                <data android:scheme="udp" />
+                <data android:scheme="gopher" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="ftp" />
+                <data android:scheme="rtsp" />
+                <data android:scheme="rtmp" />
+                <data android:scheme="mms" />
+                <data android:scheme="tcp" />
+                <data android:scheme="udp" />
+                <data android:scheme="gopher" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.3gp" />
+                <data android:pathPattern=".*\.avi" />
+                <data android:pathPattern=".*\.asf" />
+                <data android:pathPattern=".*\.divx" />
+                <data android:pathPattern=".*\.dvr-ms" />
+                <data android:pathPattern=".*\.f4v" />
+                <data android:pathPattern=".*\.flv" />
+                <data android:pathPattern=".*\.m2ts" />
+                <data android:pathPattern=".*\.m3u8" />
+                <data android:pathPattern=".*\.m4v" />
+                <data android:pathPattern=".*\.mkv" />
+                <data android:pathPattern=".*\.mp4" />
+                <data android:pathPattern=".*\.mpeg" />
+                <data android:pathPattern=".*\.mpg" />
+                <data android:pathPattern=".*\.mov" />
+                <data android:pathPattern=".*\.mts" />
+                <data android:pathPattern=".*\.ogm" />
+                <data android:pathPattern=".*\.rm" />
+                <data android:pathPattern=".*\.rmvb" />
+                <data android:pathPattern=".*\.ts" />
+                <data android:pathPattern=".*\.vdat" />
+                <data android:pathPattern=".*\.vob" />
+                <data android:pathPattern=".*\.VOB" />
+                <data android:pathPattern=".*\.webm" />
+                <data android:pathPattern=".*\.wmv" />
+                <data android:pathPattern=".*\.wtv" />
+                <data android:pathPattern=".*\.vid" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="*/rmvb" />
+                <data android:mimeType="*/avi" />
+                <data android:mimeType="*/mkv" />
+                <data android:mimeType="application/sdp" />
+                <data android:mimeType="application/mp4" />
+                <data android:mimeType="application/mpeg*" />
+                <data android:mimeType="application/ogg" />
+                <data android:mimeType="application/vnd.rn-realmedia*" />
+                <data android:mimeType="application/3gpp*" />
+                <data android:mimeType="application/vnd.3gp*" />
+                <data android:mimeType="application/vnd.dvd*" />
+                <data android:mimeType="application/vnd.dolby*" />
+                <data android:mimeType="application/x-mpegURL" />
+                <data android:mimeType="application/vnd.apple.mpegurl" />
+                <data android:mimeType="application/x-quicktimeplayer" />
+                <data android:mimeType="application/x-shockwave-flash" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="*" />
+                <data android:pathPattern=".*.3gp" />
+                <data android:pathPattern=".*..*.3gp" />
+                <data android:pathPattern=".*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*.avi" />
+                <data android:pathPattern=".*..*.avi" />
+                <data android:pathPattern=".*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*.asf" />
+                <data android:pathPattern=".*..*.asf" />
+                <data android:pathPattern=".*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*.divx" />
+                <data android:pathPattern=".*..*.divx" />
+                <data android:pathPattern=".*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*.dvr-ms" />
+                <data android:pathPattern=".*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*.f4v" />
+                <data android:pathPattern=".*..*.f4v" />
+                <data android:pathPattern=".*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*.flv" />
+                <data android:pathPattern=".*..*.flv" />
+                <data android:pathPattern=".*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*.m2ts" />
+                <data android:pathPattern=".*..*.m2ts" />
+                <data android:pathPattern=".*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*.m3u" />
+                <data android:pathPattern=".*..*.m3u" />
+                <data android:pathPattern=".*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*.m3u8" />
+                <data android:pathPattern=".*..*.m3u8" />
+                <data android:pathPattern=".*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*.m4v" />
+                <data android:pathPattern=".*..*.m4v" />
+                <data android:pathPattern=".*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*.mkv" />
+                <data android:pathPattern=".*..*.mkv" />
+                <data android:pathPattern=".*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*.mp4" />
+                <data android:pathPattern=".*..*.mp4" />
+                <data android:pathPattern=".*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*.mpeg" />
+                <data android:pathPattern=".*..*.mpeg" />
+                <data android:pathPattern=".*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*.mpg" />
+                <data android:pathPattern=".*..*.mpg" />
+                <data android:pathPattern=".*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*.mov" />
+                <data android:pathPattern=".*..*.mov" />
+                <data android:pathPattern=".*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*.mts" />
+                <data android:pathPattern=".*..*.mts" />
+                <data android:pathPattern=".*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*.ogg" />
+                <data android:pathPattern=".*..*.ogg" />
+                <data android:pathPattern=".*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*.ogm" />
+                <data android:pathPattern=".*..*.ogm" />
+                <data android:pathPattern=".*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*.rm" />
+                <data android:pathPattern=".*..*.rm" />
+                <data android:pathPattern=".*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*.rmvb" />
+                <data android:pathPattern=".*..*.rmvb" />
+                <data android:pathPattern=".*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*.ts" />
+                <data android:pathPattern=".*..*.ts" />
+                <data android:pathPattern=".*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*.vob" />
+                <data android:pathPattern=".*..*.vob" />
+                <data android:pathPattern=".*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*.VOB" />
+                <data android:pathPattern=".*..*.VOB" />
+                <data android:pathPattern=".*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*.webm" />
+                <data android:pathPattern=".*..*.webm" />
+                <data android:pathPattern=".*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*.wmv" />
+                <data android:pathPattern=".*..*.wmv" />
+                <data android:pathPattern=".*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*.wtv" />
+                <data android:pathPattern=".*..*.wtv" />
+                <data android:pathPattern=".*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wtv" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="*" />
+                <data android:pathPattern=".*.3gp" />
+                <data android:pathPattern=".*..*.3gp" />
+                <data android:pathPattern=".*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.3gp" />
+                <data android:pathPattern=".*.avi" />
+                <data android:pathPattern=".*..*.avi" />
+                <data android:pathPattern=".*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.avi" />
+                <data android:pathPattern=".*.asf" />
+                <data android:pathPattern=".*..*.asf" />
+                <data android:pathPattern=".*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.asf" />
+                <data android:pathPattern=".*.divx" />
+                <data android:pathPattern=".*..*.divx" />
+                <data android:pathPattern=".*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.divx" />
+                <data android:pathPattern=".*.dvr-ms" />
+                <data android:pathPattern=".*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.dvr-ms" />
+                <data android:pathPattern=".*.f4v" />
+                <data android:pathPattern=".*..*.f4v" />
+                <data android:pathPattern=".*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.f4v" />
+                <data android:pathPattern=".*.flv" />
+                <data android:pathPattern=".*..*.flv" />
+                <data android:pathPattern=".*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.flv" />
+                <data android:pathPattern=".*.m2ts" />
+                <data android:pathPattern=".*..*.m2ts" />
+                <data android:pathPattern=".*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m2ts" />
+                <data android:pathPattern=".*.m3u" />
+                <data android:pathPattern=".*..*.m3u" />
+                <data android:pathPattern=".*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m3u" />
+                <data android:pathPattern=".*.m3u8" />
+                <data android:pathPattern=".*..*.m3u8" />
+                <data android:pathPattern=".*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m3u8" />
+                <data android:pathPattern=".*.m4v" />
+                <data android:pathPattern=".*..*.m4v" />
+                <data android:pathPattern=".*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.m4v" />
+                <data android:pathPattern=".*.mkv" />
+                <data android:pathPattern=".*..*.mkv" />
+                <data android:pathPattern=".*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mkv" />
+                <data android:pathPattern=".*.mp4" />
+                <data android:pathPattern=".*..*.mp4" />
+                <data android:pathPattern=".*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mp4" />
+                <data android:pathPattern=".*.mpeg" />
+                <data android:pathPattern=".*..*.mpeg" />
+                <data android:pathPattern=".*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mpeg" />
+                <data android:pathPattern=".*.mpg" />
+                <data android:pathPattern=".*..*.mpg" />
+                <data android:pathPattern=".*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mpg" />
+                <data android:pathPattern=".*.mov" />
+                <data android:pathPattern=".*..*.mov" />
+                <data android:pathPattern=".*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mov" />
+                <data android:pathPattern=".*.mts" />
+                <data android:pathPattern=".*..*.mts" />
+                <data android:pathPattern=".*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.mts" />
+                <data android:pathPattern=".*.ogg" />
+                <data android:pathPattern=".*..*.ogg" />
+                <data android:pathPattern=".*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ogg" />
+                <data android:pathPattern=".*.ogm" />
+                <data android:pathPattern=".*..*.ogm" />
+                <data android:pathPattern=".*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ogm" />
+                <data android:pathPattern=".*.rm" />
+                <data android:pathPattern=".*..*.rm" />
+                <data android:pathPattern=".*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.rm" />
+                <data android:pathPattern=".*.rmvb" />
+                <data android:pathPattern=".*..*.rmvb" />
+                <data android:pathPattern=".*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.rmvb" />
+                <data android:pathPattern=".*.ts" />
+                <data android:pathPattern=".*..*.ts" />
+                <data android:pathPattern=".*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.ts" />
+                <data android:pathPattern=".*.vob" />
+                <data android:pathPattern=".*..*.vob" />
+                <data android:pathPattern=".*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.vob" />
+                <data android:pathPattern=".*.VOB" />
+                <data android:pathPattern=".*..*.VOB" />
+                <data android:pathPattern=".*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.VOB" />
+                <data android:pathPattern=".*.webm" />
+                <data android:pathPattern=".*..*.webm" />
+                <data android:pathPattern=".*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.webm" />
+                <data android:pathPattern=".*.wmv" />
+                <data android:pathPattern=".*..*.wmv" />
+                <data android:pathPattern=".*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wmv" />
+                <data android:pathPattern=".*.wtv" />
+                <data android:pathPattern=".*..*.wtv" />
+                <data android:pathPattern=".*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*.wtv" />
+                <data android:pathPattern=".*..*..*..*..*..*..*..*..*..*..*..*..*..*..*.wtv" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:label="  Vidmate " android:name="com.nemo.vidmate.MainActivity$JUMP" android:exported="true" android:targetActivity="com.nemo.vidmate.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="vidmate" android:host="jump" />
+            </intent-filter>
+        </activity-alias>
+        <activity android:name="com.nemo.vidmate.player.PlayerActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name="com.nemo.vidmate.player.PlayerActivity2" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name="com.nemo.vidmate.favhis.ShareWebviewActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:theme="@style/ActivityDialog" android:name="com.nemo.vidmate.favhis.LikeWebviewActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name="com.mob.tools.MobUIShell" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustResize|adjustNothing">
+            <meta-data android:name="AuthorizeAdapter" android:value="com.nemo.vidmate.favhis.AuthCustomAdapter" />
+        </activity>
+        <activity android:label="  Music Player" android:name="com.nemo.vidmate.player.music.MusicPlayerActivity" android:exported="true" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.crop.CropActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.meme.MemeCropActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.meme.MemeEditActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.meme.MemePostActivity" android:screenOrientation="portrait" />
+        <activity android:theme="@*android:style/Theme.Black.NoTitleBar.Fullscreen" android:label="  Video Player" android:name="com.nemo.vidmate.media.player.activity.NewPlayerActivity" android:exported="true" android:launchMode="singleTop" android:screenOrientation="landscape" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustResize|adjustNothing" android:hardwareAccelerated="true" />
+        <activity android:name="com.nemo.vidmate.home.tab.HomeTabManagerActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.share.BluetoothShareActivity" android:screenOrientation="portrait" />
+        <service android:name="com.nemo.vidmate.player.music.MusicPlayerService">
+            <intent-filter>
+                <action android:name="com.nemo.MusicPlayerService" />
+            </intent-filter>
+        </service>
+        <service android:name="com.nemo.vidmate.download.service.DownloadService" android:permission="android.permission.WRITE_EXTERNAL_STORAGE" android:process=":remote">
+            <intent-filter>
+                <action android:name="com.v.download.service.IDownloadInf" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </service>
+        <service android:name="com.nemo.vidmate.pushmsg.VidmateService" android:exported="true" android:process=":core">
+            <intent-filter>
+                <action android:name="com.nemo.intent.action.VidmateService" />
+            </intent-filter>
+        </service>
+        <service android:name="com.nemo.vidmate.download.offline.OfflineVideoService" android:exported="true" android:process=":vidoff" />
+        <receiver android:name="com.nemo.vidmate.receiver.NotificationReceiver" android:exported="true" android:process=":core">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
+            </intent-filter>
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.ANY_DATA_STATE" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_RESTARTED" />
+                <action android:name="android.intent.action.PACKAGE_DATA_CLEARED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.QUERY_PACKAGE_RESTART" />
+                <action android:name="android.intent.action.PACKAGE_INSTALL" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.MEDIA_REMOVED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTABLE" />
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+                <action android:name="android.intent.action.MEDIA_CHECKING" />
+                <data android:scheme="file" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.nemo.vidmate.receiver.PackageChangeReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.nemo.vidmate" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.nemo.vidmate.gcm.GCMIntentService" />
+        <service android:name="com.nemo.vidmate.pushmsg.sync.AuthenticatorService" android:process=":core">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator" />
+        </service>
+        <provider android:name="com.nemo.vidmate.pushmsg.sync.SyncContentProvider" android:exported="false" android:process=":core" android:authorities="com.nemo.vidmate.pushmsg.sync.provider" android:syncable="true" />
+        <service android:name="com.nemo.vidmate.pushmsg.sync.SyncService" android:exported="true" android:process=":core">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter" android:resource="@xml/syncadapter" />
+        </service>
+        <activity android:name="com.nemo.vidmate.media.local.LocalMediaActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.localmusic.LocalMusicActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.localmusic.LocalMusicDetailActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.localmusic.LocalMusicChoiceListActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.localvideo.LocalVideoActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.localvideo.LocalVideoDetailActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.localvideo.LocalVideoChoiceListActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.search.LocalMediaSearchActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.privatevideo.PrivateVideoVerifyActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.privatevideo.PrivateVideoActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.privatevideo.PrivateVideoImportActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.media.local.privatevideo.PrivateVideoExportActivity" android:launchMode="singleTask" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.player.music.lyrics.LrcSearchActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.video.VideoDetailActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustResize|adjustNothing" android:hardwareAccelerated="true" />
+        <activity android:name="com.nemo.vidmate.meme.MemeTagListActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.meme.MemeReportActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.meme.MemeDetailActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.me.AboutActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.user.UserActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.user.UserProfileActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.me.SettingActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.me.SettingNotificationActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.me.SettingDownloadActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.me.SettingGeneralActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.me.GuideActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.me.FeedbackActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+        <activity android:name="com.nemo.vidmate.recommend.fullmovie.FullMovieActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.recommend.tvshow.TvShowActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.recommend.music.MusicActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="com.nemo.vidmate.special.SpecialActiviy" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <meta-data android:name="app_license" android:value="06dae5b105de36ac755f934166e4469d" />
+        <provider android:name="com.duapps.ad.stats.DuAdCacheProvider" android:exported="false" android:authorities="com.nemo.vidmate.DuAdCacheProvider" />
+        <meta-data android:name="bat_app_key" android:value="J5MZ467NPS2L6C16VO4FQ01D" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name="com.batmobi.BatMobiActivity" android:taskAffinity="com.wemob.ads.adtask" android:excludeFromRecents="true" android:screenOrientation="portrait" />
+        <activity android:theme="@*android:style/Theme.Dialog" android:name="com.bmob.adsdk.internal.turbo.LoadActivity" />
+        <service android:name="com.bmob.adsdk.internal.ht.cat.CatService" android:exported="false" />
+        <service android:name="com.bmob.adsdk.internal.ht.act.ActService" android:exported="false" />
+        <meta-data android:name="BMOBSDK_APP_KEY" android:value="5930398f-ce665455-84098962-73d722ac-2acda8d1" />
+        <meta-data android:name="BMOBSDK_APP_ID" android:value="30177" />
+        <service android:name="com.wemob.ads.ooa.OOAService" android:persistent="true" android:exported="false" />
+        <activity android:name="com.facebook.ads.InterstitialAdActivity" android:taskAffinity="com.wemob.ads.adtask" android:excludeFromRecents="true" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name="com.facebook.ads.AudienceNetworkActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name="com.nemo.vidmate.browser.control.activity.BrowserStandardActivity" android:launchMode="standard" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustPan|adjustNothing" />
+        <activity android:name="com.nemo.vidmate.browser.control.activity.BrowserSingleTopActivity" android:launchMode="singleTop" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustPan|adjustNothing" />
+        <activity android:name="com.nemo.vidmate.browser.control.activity.BrowserSingleTaskActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustPan|adjustNothing" />
+        <activity android:name="com.nemo.vidmate.browser.control.activity.BrowserSingleInstanceActivity" android:launchMode="singleInstance" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustPan|adjustNothing" />
+        <activity android:name="com.nemo.vidmate.nineapp.AppsMoreActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.nineapp.NineAppsDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.nineapp.NineAppsImageActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.ninegame.NineGameActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.ninegame.NineGameDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.nemo.vidmate.offline.videos.OfflineVideosActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustResize|adjustNothing" android:hardwareAccelerated="true" android:largeHeap="true" android:supportsRtl="true" />
+        <activity android:name="com.nemo.vidmate.offline.videos.OfflineVideoFAQActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize" />
+        <activity android:name="nativesdk.ad.adsdk.modules.activityad.MarketActivity" android:screenOrientation="portrait" android:configChanges="orientation" />
+        <activity android:name="nativesdk.ad.adsdk.modules.activityad.rss.NewsActivity" android:screenOrientation="portrait" android:configChanges="orientation" />
+        <activity android:name="nativesdk.ad.adsdk.modules.activityad.rss.NewsDetailActivity" android:screenOrientation="portrait" android:configChanges="orientation" />
+        <activity android:name="nativesdk.ad.adsdk.modules.activityad.AvLoadingActivity" android:screenOrientation="portrait" android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="nativesdk.ad.adsdk.modules.activityad.AvLoadingActivity.SHORT_CUT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="nativesdk.ad.adsdkcore.receiver.NetworkSwitchReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <service android:name="nativesdk.ad.adsdkcore.service.AdPreloadService" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="appwall.action.setup.alarm" />
+                <action android:name="appwall.action.refresh.cache" />
+                <action android:name="appwall.action.report.notice" />
+            </intent-filter>
+        </service>
+        <receiver android:name="nativesdk.ad.adsdkcore.receiver.PackageAddedReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

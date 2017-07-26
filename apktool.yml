@@ -1,0 +1,23 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: VidmateHDVideoDownloaderLiveTV_v3.19_apkpure.com.apk
+compressionType: false
+doNotCompress:
+- html
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '8'
+  targetSdkVersion: '17'
+sharedLibrary: false
+unknownFiles:
+  manifest: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.2.3
+versionInfo:
+  versionCode: '319'
+  versionName: '3.19'
